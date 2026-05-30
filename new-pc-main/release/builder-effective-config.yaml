@@ -1,0 +1,19 @@
+directories:
+  output: release
+  buildResources: build
+appId: com.library.seat.app
+productName: LibrarySeatSystem
+copyright: Copyright 2026
+files:
+  - filter:
+      - dist/**/*
+      - electron/**/*
+      - package.json
+extraResources:
+  - from: server
+    to: server
+  - from: node_modules
+    to: server/node_modules
+win:
+  target: dir
+electronVersion: 42.3.0

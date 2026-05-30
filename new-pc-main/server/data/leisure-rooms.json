@@ -1,0 +1,19 @@
+{
+  "rooms": [
+    {
+      "id": 1,
+      "name": "古籍休闲区",
+      "openTime": "08:00 - 22:00",
+      "peopleCount": 45,
+      "createdAt": "2025-05-30T10:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "name": "报刊休闲区",
+      "openTime": "08:00 - 22:00",
+      "peopleCount": 120,
+      "createdAt": "2025-05-30T10:00:00.000Z"
+    }
+  ],
+  "nextId": 3
+}

@@ -1,0 +1,128 @@
+@startuml UseCaseDiagram
+!theme plain
+title 智慧图书馆座位预约系统 — 用例图
+
+left to right direction
+
+actor "学生用户" as Student
+actor "管理员" as Admin
+
+rectangle "用户端" {
+  package "用户认证" {
+    usecase "注册" as UC_Register
+    usecase "登录" as UC_Login
+    usecase "绑定学号" as UC_BindStudent
+  }
+
+  package "座位浏览与预约" {
+    usecase "浏览楼层座位" as UC_BrowseFloor
+    usecase "查看座位地图" as UC_SeatMap
+    usecase "筛选座位" as UC_FilterSeat
+    usecase "预约座位" as UC_ReserveSeat
+  }
+
+  package "预约管理" {
+    usecase "查看我的预约" as UC_MyReservations
+    usecase "取消预约" as UC_CancelReservation
+  }
+
+  package "签到签退" {
+    usecase "签到" as UC_CheckIn
+    usecase "签退" as UC_CheckOut
+  }
+
+  package "个人中心" {
+    usecase "查看个人信息" as UC_ViewProfile
+    usecase "修改个人信息" as UC_EditProfile
+    usecase "查看信用积分" as UC_ViewCredit
+    usecase "查看学习时长" as UC_ViewStudyTime
+    usecase "查看信用策略" as UC_CreditStrategy
+    usecase "查看当前座位" as UC_CurrentSeat
+  }
+
+  package "通知消息" {
+    usecase "查看通知列表" as UC_ViewNotifications
+    usecase "标记已读" as UC_MarkRead
+    usecase "删除通知" as UC_DeleteNotification
+  }
+
+  package "收藏" {
+    usecase "收藏座位" as UC_FavoriteSeat
+    usecase "收藏自习室" as UC_FavoriteRoom
+    usecase "管理收藏" as UC_ManageFavorites
+  }
+
+  package "历史记录" {
+    usecase "查看历史预约" as UC_ViewHistory
+    usecase "筛选历史记录" as UC_FilterHistory
+  }
+}
+
+rectangle "管理端" {
+  package "数据统计" {
+    usecase "查看座位统计" as UC_SeatStats
+    usecase "查看用户统计" as UC_UserStats
+    usecase "查看预约统计" as UC_ReservationStats
+  }
+
+  package "座位管理" {
+    usecase "查看座位列表" as UC_AdminSeatList
+    usecase "修改座位状态" as UC_ModifySeatStatus
+    usecase "批量修改座位" as UC_BatchModifySeat
+  }
+
+  package "预约管理" {
+    usecase "查看所有预约" as UC_AdminAllReservations
+    usecase "删除预约" as UC_AdminDeleteReservation
+  }
+
+  package "用户管理" {
+    usecase "查看用户列表" as UC_AdminUserList
+    usecase "查看用户详情" as UC_AdminUserDetail
+  }
+}
+
+Student --> UC_Register
+Student --> UC_Login
+Student --> UC_BindStudent
+Student --> UC_BrowseFloor
+Student --> UC_SeatMap
+Student --> UC_FilterSeat
+Student --> UC_ReserveSeat
+Student --> UC_MyReservations
+Student --> UC_CancelReservation
+Student --> UC_CheckIn
+Student --> UC_CheckOut
+Student --> UC_ViewProfile
+Student --> UC_EditProfile
+Student --> UC_ViewCredit
+Student --> UC_ViewStudyTime
+Student --> UC_CreditStrategy
+Student --> UC_CurrentSeat
+Student --> UC_ViewNotifications
+Student --> UC_MarkRead
+Student --> UC_DeleteNotification
+Student --> UC_FavoriteSeat
+Student --> UC_FavoriteRoom
+Student --> UC_ManageFavorites
+Student --> UC_ViewHistory
+Student --> UC_FilterHistory
+
+Admin --> UC_Login
+Admin --> UC_SeatStats
+Admin --> UC_UserStats
+Admin --> UC_ReservationStats
+Admin --> UC_AdminSeatList
+Admin --> UC_ModifySeatStatus
+Admin --> UC_BatchModifySeat
+Admin --> UC_AdminAllReservations
+Admin --> UC_AdminDeleteReservation
+Admin --> UC_AdminUserList
+Admin --> UC_AdminUserDetail
+
+UC_ReserveSeat ..> UC_Login : <<include>>
+UC_CheckIn ..> UC_Login : <<include>>
+UC_CancelReservation ..> UC_Login : <<include>>
+UC_ModifySeatStatus ..> UC_Login : <<include>>
+
+@enduml

@@ -1,0 +1,17 @@
+{
+  "users": [
+    {
+      "username": "test",
+      "password": "$2b$10$aHUkVcGWAfYlcES0qJgbreTlIyHyYV4C9v.sGqUeCNsSj0rbgNhoq",
+      "name": "张三",
+      "studentNo": "20210001",
+      "creditScore": 95,
+      "totalStudyTime": 360,
+      "phone": "138****1234",
+      "avatar": null,
+      "id": 1,
+      "createdAt": "2026-05-29T18:15:38.783Z"
+    }
+  ],
+  "nextId": 2
+}

@@ -1,0 +1,231 @@
+@startuml ClassDiagram
+!theme plain
+title 智慧图书馆座位预约系统 — 类图
+
+class User {
+  - id : int
+  - username : String
+  - password : String
+  - name : String
+  - studentNo : String
+  - creditScore : int
+  - totalStudyTime : int
+  - phone : String
+  - avatar : String
+  - createdAt : String
+  + getProfile() : UserProfile
+  + updateProfile(name, phone, studentNo) : void
+}
+
+class UserProfile {
+  - id : int
+  - name : String
+  - studentNo : String
+  - creditScore : int
+  - totalStudyTime : int
+  - phone : String
+  - avatar : String
+}
+
+class Seat {
+  - id : String
+  - seatNo : String
+  - floor : String
+  - area : String
+  - status : SeatStatus
+  - window : boolean
+  - power : boolean
+  - silent : boolean
+  + getTags() : List<String>
+}
+
+enum SeatStatus {
+  available
+  booked
+  unavailable
+}
+
+class Reservation {
+  - id : int
+  - userId : int
+  - seatId : String
+  - seatNo : String
+  - seatType : SeatType
+  - startTime : String
+  - endTime : String
+  - status : ReservationStatus
+  - checkInTime : String
+  - checkOutTime : String
+  - cancelReason : String
+  - createdAt : String
+  + cancel(reason) : void
+  + checkIn() : void
+  + checkOut() : int
+}
+
+enum ReservationStatus {
+  pending
+  checked_in
+  completed
+  cancelled
+  expired
+}
+
+enum SeatType {
+  silent
+  window
+  power
+  normal
+}
+
+class Notification {
+  - id : int
+  - userId : int
+  - type : String
+  - title : String
+  - summary : String
+  - content : String
+  - actionLink : String
+  - actionText : String
+  - isRead : boolean
+  - createdAt : String
+  + markAsRead() : void
+}
+
+class Favorite {
+  - id : int
+  - userId : int
+  - itemType : FavoriteType
+  - itemId : String
+  - createdAt : String
+}
+
+enum FavoriteType {
+  seat
+  room
+}
+
+class LeisureRoom {
+  - id : String
+  - name : String
+  - openTime : String
+  - peopleCount : int
+}
+
+class LoginRequest {
+  - username : String
+  - password : String
+}
+
+class LoginResponse {
+  - token : String
+  - userInfo : UserInfo
+}
+
+class UserInfo {
+  - id : int
+  - name : String
+  - studentNo : String
+  - credit : int
+  - role : String
+}
+
+class RegisterRequest {
+  - username : String
+  - password : String
+  - name : String
+  - studentNo : String
+}
+
+class ReservationRequest {
+  - seatId : String
+  - seatNo : String
+  - seatType : String
+  - startTime : String
+  - endTime : String
+}
+
+class CheckInRequest {
+  - reservationId : int
+}
+
+class ApiResponse<T> {
+  - code : int
+  - data : T
+  - message : String
+}
+
+class JsonStore {
+  - filePath : String
+  - cache : Map
+  + load() : void
+  + save() : void
+  + getCollection(name) : List
+  + findById(name, id) : Object
+  + findOne(name, predicate) : Object
+  + findMany(name, predicate) : List
+  + insert(name, item) : Object
+  + update(name, id, updates) : Object
+  + delete(name, id) : boolean
+  + count(name, predicate) : int
+}
+
+class AuthService {
+  + login(username, password) : LoginResponse
+  + register(data) : LoginResponse
+  + verify(token) : UserProfile
+  - generateToken(userId, username) : String
+  - hashPassword(password) : String
+}
+
+class SeatService {
+  + getSeats(floor) : List<Seat>
+  + getSeatById(id) : Seat
+  + getSeatSummary() : SeatStats
+}
+
+class ReservationService {
+  + createReservation(userId, data) : Reservation
+  + getMyReservations(userId) : List<Reservation>
+  + cancelReservation(userId, id, reason) : void
+  + checkIn(userId, reservationId) : void
+  + checkOut(userId, reservationId) : void
+}
+
+class NotificationService {
+  + getNotifications(userId, type, page, pageSize) : Page<Notification>
+  + getUnreadCount(userId) : int
+  + markAsRead(userId, id) : void
+  + markAllAsRead(userId) : void
+  + deleteNotification(userId, id) : void
+}
+
+class AdminService {
+  + getStats() : AdminStats
+  + getAllReservations() : List<Reservation>
+  + getAllUsers() : List<User>
+  + getSeats() : List<Seat>
+  + updateSeatStatus(id, status) : void
+  + batchUpdateSeats(ids, status) : void
+  + deleteReservation(id) : void
+}
+
+User "1" -- "0..*" Reservation : makes >
+User "1" -- "0..*" Notification : receives >
+User "1" -- "0..*" Favorite : has >
+Seat "1" -- "0..*" Reservation : booked in >
+Favorite "0..*" -- "1" Seat : references >
+Favorite "0..*" -- "1" LeisureRoom : references >
+Reservation --> ReservationStatus
+Reservation --> SeatType
+Seat --> SeatStatus
+User --> UserInfo
+LoginResponse --> UserInfo
+LoginResponse --> ApiResponse
+AuthService --> JsonStore
+SeatService --> JsonStore
+ReservationService --> JsonStore
+NotificationService --> JsonStore
+AdminService --> JsonStore
+
+@enduml

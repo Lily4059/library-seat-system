@@ -1,0 +1,63 @@
+{
+  "notifications": [
+    {
+      "type": "booking",
+      "title": "预约签到提醒",
+      "summary": "您预约的 A01 座位即将开始，请及时签到。",
+      "content": "您预约的 1楼 A区 A01 座位将于今天 12:30 开始，请在 12:15 - 12:45 之间完成签到。若无法前往，请提前取消。",
+      "actionLink": "/my-reservations",
+      "actionText": "查看预约",
+      "isRead": false,
+      "userId": 1,
+      "id": 1,
+      "createdAt": "2026-05-29T18:15:38.784Z"
+    },
+    {
+      "type": "system",
+      "title": "系统通知",
+      "summary": "图书馆将于 5 月 1 日闭馆一天。",
+      "content": "各位读者：接学校通知，图书馆将于 5 月 1 日（劳动节）闭馆一天，5 月 2 日恢复正常开放。期间线上服务正常运行。",
+      "isRead": false,
+      "userId": 1,
+      "id": 2,
+      "createdAt": "2026-05-29T18:15:38.785Z"
+    },
+    {
+      "type": "points",
+      "title": "积分变动提醒",
+      "summary": "您已成功签到，积分 +5。",
+      "content": "您预约的 A01 座位已成功签到，按时签到奖励积分 +5，当前积分为 95 分。",
+      "actionLink": "/credit-log",
+      "actionText": "查看积分",
+      "isRead": true,
+      "userId": 1,
+      "id": 3,
+      "createdAt": "2026-05-29T18:15:38.785Z"
+    },
+    {
+      "type": "booking",
+      "title": "座位释放提醒",
+      "summary": "您关注的 B12 座位已空闲。",
+      "content": "您关注的 2楼 B区 B12 座位目前已空闲，快去预约吧！",
+      "actionLink": "/home",
+      "actionText": "去预约",
+      "isRead": true,
+      "userId": 1,
+      "id": 4,
+      "createdAt": "2026-05-29T18:15:38.786Z"
+    },
+    {
+      "type": "system",
+      "title": "占座违规警告",
+      "summary": "系统检测到您离开座位超时。",
+      "content": "系统检测到您离开 A05 座位已超过 30 分钟，系统已自动释放您的座位，并扣除积分 10 分。",
+      "actionLink": "/credit-log",
+      "actionText": "查看详情",
+      "isRead": true,
+      "userId": 1,
+      "id": 5,
+      "createdAt": "2026-05-29T18:15:38.787Z"
+    }
+  ],
+  "nextId": 6
+}

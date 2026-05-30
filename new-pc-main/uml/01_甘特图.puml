@@ -1,0 +1,70 @@
+@startuml GanttChart
+!theme plain
+title 智慧图书馆座位预约系统 — 项目开发甘特图
+
+scale 1 as 7 days
+
+Project starts 2026-05-30
+
+Saturday are closed
+Sunday are closed
+
+== 需求分析 ==
+[需求调研与梳理] lasts 3 days
+[需求调研与梳理] starts 2026-05-30
+[需求评审] lasts 2 days
+[需求评审] starts 2026-06-04
+
+== 系统设计 ==
+[架构设计] lasts 2 days
+[架构设计] starts 2026-06-04
+[数据库与接口设计] lasts 3 days
+[数据库与接口设计] starts 2026-06-08
+[UI原型设计] lasts 3 days
+[UI原型设计] starts 2026-06-08
+
+== 增量1：核心功能 ==
+[后端API开发] lasts 7 days
+[后端API开发] starts 2026-06-08
+[PC前端-认证与座位浏览] lasts 5 days
+[PC前端-认证与座位浏览] starts 2026-06-11
+[增量1集成测试] lasts 2 days
+[增量1集成测试] starts 2026-06-18
+
+== 增量2：用户端完善 ==
+[签到签退功能] lasts 3 days
+[签到签退功能] starts 2026-06-18
+[预约管理与通知] lasts 4 days
+[预约管理与通知] starts 2026-06-18
+[个人中心] lasts 3 days
+[个人中心] starts 2026-06-23
+[增量2集成测试] lasts 2 days
+[增量2集成测试] starts 2026-06-26
+
+== 增量3：Android移动端 ==
+[Android用户端-座位与预约] lasts 5 days
+[Android用户端-座位与预约] starts 2026-06-23
+[Android用户端-签到与个人中心] lasts 4 days
+[Android用户端-签到与个人中心] starts 2026-06-30
+[收藏与历史记录] lasts 3 days
+[收藏与历史记录] starts 2026-06-30
+[增量3集成测试] lasts 2 days
+[增量3集成测试] starts 2026-07-04
+
+== 增量4：管理端与封装 ==
+[管理端PC页面] lasts 4 days
+[管理端PC页面] starts 2026-07-02
+[管理端Android App] lasts 3 days
+[管理端Android App] starts 2026-07-06
+[Electron桌面封装] lasts 2 days
+[Electron桌面封装] starts 2026-07-06
+[增量4集成测试] lasts 2 days
+[增量4集成测试] starts 2026-07-09
+
+== 系统测试与交付 ==
+[全量集成测试] lasts 3 days
+[全量集成测试] starts 2026-07-09
+[部署与文档] lasts 3 days
+[部署与文档] starts 2026-07-14
+
+@enduml
